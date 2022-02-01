@@ -14,11 +14,12 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_favroite"
+        android:src="@drawable/ic_love"
         app:fabSize="normal"
         app:backgroundTint="@color/white"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="32dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

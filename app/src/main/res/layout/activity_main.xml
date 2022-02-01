@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            app:defaultHost = "true"
+            app:defaultNavHost = "true"
             app:navGraph = "@navigation/news_nav_graph"/>
 
 
@@ -32,6 +32,7 @@
         android:id="@+id/bottomnavigation"
         android:layout_width="match_parent"
         android:layout_height="58dp"
+        app:menu="@menu/buttom_navigation_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

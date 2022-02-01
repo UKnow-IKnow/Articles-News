@@ -7,11 +7,13 @@
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/drawable/ic_breakingnews.xml" value="0.2814814814814815" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/drawable/ic_love.xml" value="0.2814814814814815" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/activity_main.xml" value="0.1634963768115942" />
+        <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_article.xml" value="0.14375" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_breakingnews.xml" value="0.1634963768115942" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_preveiw.xml" value="0.1634963768115942" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_saved.xml" value="0.1634963768115942" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_search.xml" value="0.1634963768115942" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_srticle.xml" value="0.1634963768115942" />
+        <entry key="..\:/Android Project/NewsApp2/app/src/main/res/menu/buttom_navigation_menu.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
