@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Project/NewsApp2/app/src/main/res/drawable/ic_allnews.xml" value="0.2814814814814815" />
+        <entry key="..\:/Android Project/NewsApp2/app/src/main/res/drawable/ic_breakingnews.xml" value="0.2814814814814815" />
+        <entry key="..\:/Android Project/NewsApp2/app/src/main/res/drawable/ic_love.xml" value="0.2814814814814815" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/activity_main.xml" value="0.1634963768115942" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_breakingnews.xml" value="0.1634963768115942" />
         <entry key="..\:/Android Project/NewsApp2/app/src/main/res/layout/fragment_preveiw.xml" value="0.1634963768115942" />
