@@ -14,6 +14,9 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
+
+
+
     }
 
 }
