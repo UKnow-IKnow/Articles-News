@@ -16,3 +16,4 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         viewModel = (activity as MainActivity).viewModel
     }
 }
+
