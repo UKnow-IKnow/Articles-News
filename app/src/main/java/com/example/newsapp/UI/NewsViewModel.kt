@@ -1,17 +1,22 @@
 package com.example.newsapp.UI
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.newsapp.UI.database.ArticleDatabase
 import com.example.newsapp.UI.models.NewsResponce
 import com.example.newsapp.UI.repository.NewsRepository
 import com.example.newsapp.UI.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class NewsViewModel (
-    val newsRepository: NewsRepository
-    ) : ViewModel() {
+class NewsViewModel(
+    application: Application
+) : AndroidViewModel(application) {
+
+
+    private val newsRepository = NewsRepository(ArticleDatabase(context = application))
 
     val breakingNews: MutableLiveData<Resource<NewsResponce>> = MutableLiveData()
     val breakingNewsPage = 1
@@ -29,8 +34,7 @@ class NewsViewModel (
 
     private fun handleBreakingNewsResponce(responce: Response<NewsResponce>) : Resource<NewsResponce>{
         if(responce.isSuccessful){
-            responce.body()?.let {
-                    resultResponce ->
+            responce.body()?.let { resultResponce ->
                 return Resource.Success(resultResponce)
             }
         }

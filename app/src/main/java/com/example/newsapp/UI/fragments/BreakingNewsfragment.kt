@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
@@ -16,14 +17,14 @@ import kotlinx.android.synthetic.main.fragment_breakingnews.*
 
 class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
 
-    lateinit var  viewModel: NewsViewModel
+    private val viewModel by activityViewModels<NewsViewModel>()
+
     lateinit var newsAdapter: NewsAdapter
 
     val TAG = "BreakingNewsfragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
 
         setupRecyclerView()
 
