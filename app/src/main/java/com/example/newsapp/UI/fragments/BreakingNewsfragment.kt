@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapp.R
 import com.example.newsapp.UI.MainActivity
 import com.example.newsapp.UI.NewsViewModel
@@ -70,6 +71,20 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
 
     private fun showProgressBar() {
         paginationProgressBar.visibility = View.VISIBLE
+    }
+
+    var isLoading = false
+    var isLastpage = false
+    var isScrolling = false
+
+    var scrollListener = object : RecyclerView.OnScrollListener(){
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+        }
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+        }
     }
 
     private fun setupRecyclerView(){

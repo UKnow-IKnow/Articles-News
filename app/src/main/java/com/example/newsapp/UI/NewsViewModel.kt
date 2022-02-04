@@ -20,10 +20,12 @@ class NewsViewModel(
     private val newsRepository = NewsRepository(ArticleDatabase(context = application))
 
     val breakingNews: MutableLiveData<Resource<NewsResponce>> = MutableLiveData()
-    val breakingNewsPage = 1
+    var breakingNewsPage = 1
+    var breakingNewsResponce: NewsResponce? = null
 
     val searchNews: MutableLiveData<Resource<NewsResponce>> = MutableLiveData()
-    val searchNewsPage = 1
+    var searchNewsPage = 1
+    var searhNewsResponce: NewsResponce? = null
 
     init {
         getBreakingNews("IND")
@@ -45,7 +47,15 @@ class NewsViewModel(
     private fun handleBreakingNewsResponce(responce: Response<NewsResponce>) : Resource<NewsResponce>{
         if(responce.isSuccessful){
             responce.body()?.let { resultResponce ->
-                return Resource.Success(resultResponce)
+                breakingNewsPage++
+                if (breakingNewsResponce == null){
+                    breakingNewsResponce = resultResponce
+                }else{
+                    val oldArticle = breakingNewsResponce?.articles
+                    val newArticle = resultResponce.articles
+                    oldArticle?.addAll(newArticle)
+                }
+                return Resource.Success(breakingNewsResponce ?:resultResponce)
             }
         }
         return Resource.Error(responce.message())
@@ -54,7 +64,15 @@ class NewsViewModel(
     private fun handleSearchNewsResponce(responce: Response<NewsResponce>) : Resource<NewsResponce>{
         if(responce.isSuccessful){
             responce.body()?.let { resultResponce ->
-                return Resource.Success(resultResponce)
+                searchNewsPage++
+                if (searhNewsResponce == null){
+                    searhNewsResponce = resultResponce
+                }else{
+                    val oldArticle = searhNewsResponce?.articles
+                    val newArticle = resultResponce.articles
+                    oldArticle?.addAll(newArticle)
+                }
+                return Resource.Success(searhNewsResponce ?:resultResponce)
             }
         }
         return Resource.Error(responce.message())
