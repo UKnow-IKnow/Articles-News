@@ -3,6 +3,7 @@ package com.example.newsapp.UI.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AbsListView
 import android.widget.Adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -14,6 +15,7 @@ import com.example.newsapp.R
 import com.example.newsapp.UI.MainActivity
 import com.example.newsapp.UI.NewsViewModel
 import com.example.newsapp.UI.adapters.NewsAdapter
+import com.example.newsapp.UI.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.newsapp.UI.util.Resource
 import kotlinx.android.synthetic.main.fragment_breakingnews.*
 
@@ -80,10 +82,30 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
     var scrollListener = object : RecyclerView.OnScrollListener(){
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
+            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                isScrolling = true
+            }
         }
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
+
+            val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+            val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+
+            val isNotLoadingAndNotLoading = !isLoading && !isLastpage
+            val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
+            val isNotAtBeginning = firstVisibleItemPosition >= 0
+            val isTotalMoreThenVisible = totalItemCount >= QUERY_PAGE_SIZE
+            val shouldPaginate = isNotLoadingAndNotLoading && isAtLastItem && isNotAtBeginning &&
+                    isTotalMoreThenVisible && isScrolling
+
+            if(shouldPaginate){
+                viewModel.getBreakingNews("IND")
+                isScrolling = false
+            }
         }
     }
 
