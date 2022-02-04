@@ -49,7 +49,9 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
                     hideProgressBar()
                     responce.data?.let {
                         newsResponce ->
-                        newsAdapter.differ.submitList(newsResponce.articles)
+                        newsAdapter.differ.submitList(newsResponce.articles.toList())
+                        val totalPages = newsResponce.totalResults / QUERY_PAGE_SIZE + 2
+                        isLastpage = viewModel.breakingNewsPage == totalPages
                     }
                 }
                 is Resource.Error ->{
@@ -69,10 +71,12 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
 
     private fun hideProgressBar() {
         paginationProgressBar.visibility = View.INVISIBLE
+        isLoading = false
     }
 
     private fun showProgressBar() {
         paginationProgressBar.visibility = View.VISIBLE
+        isLoading = true
     }
 
     var isLoading = false
@@ -114,6 +118,7 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
         rvBreakingNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
+            addOnScrollListener(this@BreakingNewsfragment.scrollListener)
         }
     }
 }
