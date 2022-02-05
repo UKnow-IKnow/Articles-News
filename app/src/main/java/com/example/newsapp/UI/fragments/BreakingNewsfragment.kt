@@ -52,6 +52,9 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
                         newsAdapter.differ.submitList(newsResponce.articles.toList())
                         val totalPages = newsResponce.totalResults / QUERY_PAGE_SIZE + 2
                         isLastpage = viewModel.breakingNewsPage == totalPages
+                        if (isLastpage){
+                            rvBreakingNews.setPadding(0,0,0,0)
+                        }
                     }
                 }
                 is Resource.Error ->{
