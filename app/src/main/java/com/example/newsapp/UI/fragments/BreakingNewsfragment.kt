@@ -61,7 +61,7 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
                     hideProgressBar()
                     responce.message?.let {
                         message ->
-                        Log.e(TAG,"An error occured: $message")
+                        Log.e(TAG,"An error occurred: $message")
                     }
                 }
                 is Resource.Loading ->{
@@ -110,7 +110,7 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
                     isTotalMoreThenVisible && isScrolling
 
             if(shouldPaginate){
-                viewModel.getBreakingNews("IND")
+                viewModel.getBreakingNews("IN")
                 isScrolling = false
             }
         }
