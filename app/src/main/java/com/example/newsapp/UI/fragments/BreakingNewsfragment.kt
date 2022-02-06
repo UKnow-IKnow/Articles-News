@@ -34,7 +34,7 @@ class BreakingNewsfragment: Fragment(R.layout.fragment_breakingnews) {
 
         newsAdapter.setonItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("artocle",it)
+                putSerializable("article",it)
             }
             findNavController().navigate(
                 R.id.action_breakingNewsfragment_to_articleFragment,
