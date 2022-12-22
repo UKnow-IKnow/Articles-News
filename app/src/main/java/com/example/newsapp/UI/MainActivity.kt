@@ -15,11 +15,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_NewsApp)
         setContentView(R.layout.activity_main)
 
-
         viewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
-
         bottomnavigation.setupWithNavController(newsnavfragment.findNavController())
     }
 }
